@@ -88,17 +88,18 @@ Data\
 
 There are some additional painting images in the sample_paintings folder that are not classified.
 
-## Predict
-There are three different predict functions:
+## Predictions
+There are three different prediction functions, each with a main() that calls various functions in the
+`predict_functions.py` file:
   1) `predict.py`:  uses the valid datasets to check the accuracy of the model using the valid dataset.
   2) `predict_random.py`: randomly selects five images from valid folder and displays image along with probability, prediction, and correct/incorrect prediction.
   3) `predict_image.py`: used to check a single unclassified image.
 
-The three predict modules load a saved model checkpoint which is configurable in the CLI.
+The three predict modules load a saved model checkpoint.  The model checkpoint is configurable in the CLI.
     
 ## Utilities
 There are some useful functions in the `utils.py` file:
   1) Get the images counts in various folders.
-  2) Check images for proper extension (useful if downloadingg images from google).
+  2) Check images for proper extension (useful if downloading images from google).
   3) Get class list and class_to_idx dictionary.
-  4) There is a function to process images (this is automatically done in the predict_*.py files)
+  4) There is a function to process images (Note: this is automatically done in the predict_*.py files)
