@@ -25,9 +25,9 @@ The models have pre-trained weights with a trainable classifier. It uses three p
 All three models achieved >90% accuracy during the validation runs after training.  The models results were fairly close with the Regnet model performing the best. 
 
 ## Image Data
-Images are sorted into two classes: "Van Gogh" and "not Van Gogh".  The raw images folder has all the images and this is a breakdown of the images.
+A custom dataset was created for the training, testing, and validation. Images were downloaded and sorted into two classes: "Van Gogh" and "not Van Gogh".  
 
-Image sources for this project:
+The raw_images folder has all the images and this is the source of the images for this project:
 
     Van Gogh Images (total paintings/discarded/total in dateset): 605
         (http://www.vggallery.com/index.html)
@@ -57,7 +57,7 @@ Image sources for this project:
         https://www.saatchiart.com/paintings/modern
 
 ## Dataset
-The raw images can be segregated into train, test, and vaild folders using the `setup.py` along with functions in the `utils.py` file.  The setup randomly assigns raw images to the folders based on the following percentages:
+The images in the raw_images folder can be divided into train, test, and vaild folders using the `setup.py` along with functions in the `utils.py` file.  The `setup.py` randomly assigns raw images to the folders based on the following percentages:
 * Train 80%
 * Test 15%
 * Validation 5%
