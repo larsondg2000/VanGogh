@@ -2,20 +2,30 @@
 
 ## Models
 The project uses three pre-trained models:
-  1) VGG19
-  2) RegNet
-  3) EfficientNet
+  1) VGG19 (weights='VGG19_Weights.DEFAULT')
+  2) RegNet (weights='RegNet_Y_16GF_Weights.DEFAULT')
+  3) EfficientNet (weights='EfficientNet_V2_L_Weights.DEFAULT')
 
-The models have pre-trained weights with a trainable classifier. It uses two python files to train the models:
-  1) train.py
-  2) train_functions.py
+The models have pre-trained weights with a trainable classifier. It uses three python files to train the models:
+  1) `train.py`: main() function call
+  2) `train_functions.py`: all the required training functions
+  3) `utils.py`: get_class()  function to get class list 
 
-The models use an Adam optimizer and CrossEntropy as the loss function.  The epochs, learning rate, and hidden layers are configurable using the CLI via arg parse.  The batch size is set to 64 and it can be modified in the train-functions.py file (or you can modify argparse to make it configurable from the CLI.) At the end of training, the test and train accuracy and losses are ploteed and the model checkpoint is saved to the saved_models folder as "model name"_checkpoint.pth.
+## Model Parameters
+* Optimizer: Adam
+* Loss Function : CrossEntropyLoss
+* Epochs: configurable using CLI
+* learning Rate: configurable using CLI
+* Hidden Layers: configurable using CLI
+* Dropout: set to .2 to .5 (depending on model)
+* Batch Size: b_size set to 64
+* Save Directory: configurable using CLI (saves as "model name"_checkpoint.pth.)
 
-The three models achieved >90% accuracy during the validation runs after training.
+## Accuracy
+All three models achieved >90% accuracy during the validation runs after training.  The models results were fairly close with the Regnet model performing the best. 
 
-## Image data
-Images are sorted into two classes- Van Gogh and not Van Gogh.  The raw images folder has all the images and this is a breakdown of the images.
+## Image Data
+Images are sorted into two classes: "Van Gogh" and "not Van Gogh".  The raw images folder has all the images and this is a breakdown of the images.
 
 Image sources for this project:
 
@@ -42,45 +52,52 @@ Image sources for this project:
 
         The images were downloded from the National Gallery of Art:
         https://www.nga.gov/collection/collection-search.html
+        
         Modern Art:
         https://www.saatchiart.com/paintings/modern
 
-The raw images can be segragated into train, test, and vaild folders using the setup.py along with functions in the utils.py file.
+## Dataset
+The raw images can be segregated into train, test, and vaild folders using the `setup.py` along with functions in the `utils.py` file.  The setup randomly assigns raw images to the folders based on the following percentages:
+* Train 80%
+* Test 15%
+* Validation 5%
 
-For my taining, testing, and validation I used the following folder structure:
+At the end of the setup, the count_images() function counts all the images in the train, test, and valid folders as a check.
 
-Data
+For my training, testing, and validation I used the following folder structure:
 
-  test
+Data\
+
+  test\
   
-    not_vangogh
+    not_vangogh\
     
-    vangogh
+    vangogh\
   
-  train
+  train\
   
-    not_vangogh
+    not_vangogh\
     
-    vangogh
+    vangogh\
   
-  valid
+  valid\
   
-    not_vangogh
+    not_vangogh\
     
-    vangogh
+    vangogh\
 
-There are also some additional paintings in the sample_paintings folder.
+There are some additional painting images in the sample_paintings folder that are not classified.
 
 ## Predict
 There are three different predict functions:
-  1) predict.py:  uses the valid datasets to check the accuracy of the models
-  2) predict_random.py: randomly selects five images to check and displays image along with probability and prediction.
-  3) predict_image.py: used to check a single image.
+  1) `predict.py`:  uses the valid datasets to check the accuracy of the model using the valid dataset.
+  2) `predict_random.py`: randomly selects five images from valid folder and displays image along with probability, prediction, and correct/incorrect prediction.
+  3) `predict_image.py`: used to check a single unclassified image.
 
 The three predict modules load a saved model checkpoint which is configurable in the CLI.
     
-## Utils.py
-There are some useful functions in the utils.py file:
+## Utilities
+There are some useful functions in the `utils.py` file:
   1) Get the images counts in various folders.
   2) Check images for proper extension (useful if downloadingg images from google).
   3) Get class list and class_to_idx dictionary.
