@@ -52,12 +52,15 @@ The raw images can be segragated into train, test, and vaild folders using the s
 For my taining, testing, and validation I used the following folder structure:
 
 Data
-  Test
+
+  test
     not_vangogh
     vangogh
-  Train
+  
+  train
     not_vangogh
     vangogh
+  
   valid
     not_vangogh
     vangogh
