@@ -1,0 +1,27 @@
+Image source for this project:
+
+    Van Gogh Images (total paintings/discarded/total in dateset): 605
+        (http://www.vggallery.com/index.html)
+        Paris (March 1886 - February 1888)- 225/17/208 paintings
+        Saint-Remy (May 1889 - May 1890)- 143/4/139 paintings
+        Auvers-sur-Oise (May 1890 - July 1890)- 76/1/75 paintings
+        Arles (February 1888 - May 1889)- 186/4/182 paintings
+        Totals: 630/26/604 (total paintings/discarded/total in dateset)
+
+    Not Van Gogh  Images (random painting images from various time periods): 609
+        Baroque- 80
+        German Expressionist- 13
+        Impressionist- 77
+        Neo-classic- 23
+        Post-Impressionist- 80
+        Realist- 86
+        Renaissance- 62
+        Rococo- 64
+        Romantic- 84
+        Modern- 40
+        Total: 609
+
+        National Gallery of Art:
+        https://www.nga.gov/collection/collection-search.html
+        Modern Art:
+        https://www.saatchiart.com/paintings/modern
