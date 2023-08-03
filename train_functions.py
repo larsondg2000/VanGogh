@@ -34,7 +34,7 @@ def args_parse():
     parser.add_argument("--save_dir", action="store", dest="save_dir",
                         default="saved_models/")
     parser.add_argument('--data_dir', type=str, dest='data_dir', action="store", nargs="*", default="data")
-    parser.add_argument('--model', dest='model', default='efficientnet_v2',
+    parser.add_argument('--model', dest='model', default='vgg19',
                         choices=['efficientnet_v2', 'vgg19', 'regnet'])
     parser.add_argument('--hidden_layers', type=int, dest='hidden_layers', default='4096')
     parser.add_argument('--learn_rate', type=float, dest='learn_rate', default='0.00033')

@@ -21,7 +21,7 @@ def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument('--checkpoint', dest='checkpoint', action='store',
                         default='saved_models/RegNet_checkpoint.pth')
-    parser.add_argument('--class_names', type=str, dest='file_path', default='data/valid/')
+    parser.add_argument('--class_names', type=str, dest='class_names', default='data/valid/')
     parser.add_argument('--custom', dest='custom_image_path', default="data/valid/vangogh/f_0790.jpg")
     parser.add_argument('--gpu', dest='gpu', action='store_true', default=False)
 
@@ -162,12 +162,17 @@ def pred_and_plot_image(model, image_path, class_names, transform, gpu):
     # Convert prediction probabilities -> prediction labels
     target_image_pred_label = torch.argmax(target_image_pred_probs, dim=1)
 
+    # Get model name
+    model_name = model.__class__.__name__
+
     # Plot image with predicted label and probability
     plt.figure()
+
     plt.imshow(img)
     plt.title(
         f"Pred: {class_names[target_image_pred_label]} | Prob: {target_image_pred_probs.max() * 100:.1f}%"
     )
+    plt.suptitle(f"Model: {model_name}")
     plt.axis(False)
     plt.show()
 
