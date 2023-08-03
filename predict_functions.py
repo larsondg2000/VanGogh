@@ -332,10 +332,17 @@ def pred_and_print(model, image_path, class_names, transform, gpu):
 
     print(f"{class_names[target_image_pred_label]}"
           f" |{target_image_pred_probs.max() * 100:.1f}% "
-          f"|Pred. is {image_is}")
+          f"|Pred.: {image_is}")
 
 
 def check_prediction(image_path, target_image_pred_label, class_names):
+    """
+    Checks if prediction is correct
+    :param image_path:
+    :param target_image_pred_label:
+    :param class_names:
+    :return:
+    """
     # check if prediction is correct
     p = PurePath(image_path)
     p_tuple = p.parts
