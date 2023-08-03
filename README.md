@@ -71,3 +71,9 @@ There are three different predict functions:
 
 The three predict modules load a saved model checkpoint which is configurable in the CLI.
     
+## Utils.py
+There are some useful functions in the utils.py file:
+  1) Get the images counts in various folders.
+  2) Check images for proper extension (useful if downloadingg images from google).
+  3) Get class list and class_to_idx dictionary.
+  4) There is a function to process images (this is automatically done in the predict_*.py files)
