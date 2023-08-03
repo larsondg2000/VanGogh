@@ -10,9 +10,7 @@ The models have pre-trained weights with a trainable classidier. It uses two pyt
   1) train.py
   2) train_functions.py
 
-The models use an Adam optimizer and CrossEntropy as the loss function.  The epochs, learning rate, and hidden layers are configurable using the CLI via arg parse.  
-The batch size is set to 64 and it can be modified in the train-functions.py file (or you can modify argparse to make it configurable from the CLI.)
-At the end of training, the test and train accuracy and losses are ploteed and the model checkpoint is saved to the saved_models folder as "model name"_checkpoint.pth.
+The models use an Adam optimizer and CrossEntropy as the loss function.  The epochs, learning rate, and hidden layers are configurable using the CLI via arg parse.  The batch size is set to 64 and it can be modified in the train-functions.py file (or you can modify argparse to make it configurable from the CLI.) At the end of training, the test and train accuracy and losses are ploteed and the model checkpoint is saved to the saved_models folder as "model name"_checkpoint.pth.
 
 The three models achieved >90% accuracy during the validation runs after training.
 
