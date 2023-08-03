@@ -54,8 +54,8 @@ For my taining, testing, and validation I used the following folder structure:
 Data
 
   test
-    not_vangogh
-    vangogh
+    - not_vangogh
+    - vangogh
   
   train
     not_vangogh
