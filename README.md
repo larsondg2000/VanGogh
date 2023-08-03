@@ -15,9 +15,9 @@ The models use an Adam optimizer and CrossEntropy as the loss function.  The epo
 The three models achieved >90% accuracy during the validation runs after training.
 
 ## Image data
-Images are sorted into two classes- Van Gogh and not Van Gogh.  The raw images folder has all the images and this is a breakdown of thwe images.
+Images are sorted into two classes- Van Gogh and not Van Gogh.  The raw images folder has all the images and this is a breakdown of the images.
 
-Image source for this project:
+Image sources for this project:
 
     Van Gogh Images (total paintings/discarded/total in dateset): 605
         (http://www.vggallery.com/index.html)
@@ -27,7 +27,7 @@ Image source for this project:
         Arles (February 1888 - May 1889)- 186/4/182 paintings
         Totals: 630/26/604 (total paintings/discarded/total in dateset)
 
-    Not Van Gogh  Images (random painting images from various time periods): 609
+    Not Van Gogh  Images (random paintings from various time periods): 609
         Baroque- 80
         German Expressionist- 13
         Impressionist- 77
@@ -40,7 +40,7 @@ Image source for this project:
         Modern- 40
         Total: 609
 
-        National Gallery of Art:
+        The images were downloded from the National Gallery of Art:
         https://www.nga.gov/collection/collection-search.html
         Modern Art:
         https://www.saatchiart.com/paintings/modern
