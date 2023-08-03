@@ -54,9 +54,10 @@ For my taining, testing, and validation I used the following folder structure:
 Data
 
   test
+  <ul>
     <li> not_vangogh</li>
-    - vangogh
-  
+    <li> vangogh</li>
+  </ul>
   train
     not_vangogh
     vangogh
