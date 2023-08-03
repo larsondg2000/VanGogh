@@ -6,7 +6,7 @@ The project uses three pre-trained models:
   2) RegNet
   3) EfficientNet
 
-The models have pre-trained weights with a trainable classidier. It uses two python files to train the models:
+The models have pre-trained weights with a trainable classifier. It uses two python files to train the models:
   1) train.py
   2) train_functions.py
 
