@@ -10,7 +10,8 @@ def main():
     args = parse_args()
     model = load_checkpoint(args.checkpoint)
     class_names = get_class(file_path=args.class_names)
-    custom_image_path = "sample_paintings/fake_selfportrait.jpg"
+    print(class_names)
+    custom_image_path = "sample_paintings/surat.jpg"
 
     predict_image(model, custom_image_path, class_names, args.gpu)
 

@@ -36,8 +36,8 @@ def args_parse():
     parser.add_argument('--data_dir', type=str, dest='data_dir', action="store", nargs="*", default="data")
     parser.add_argument('--model', dest='model', default='vgg19',
                         choices=['efficientnet_v2', 'vgg19', 'regnet'])
-    parser.add_argument('--hidden_layers', type=int, dest='hidden_layers', default='4096')
-    parser.add_argument('--learn_rate', type=float, dest='learn_rate', default='0.00033')
+    parser.add_argument('--hidden_layers', type=int, dest='hidden_layers', default='2048')
+    parser.add_argument('--learn_rate', type=float, dest='learn_rate', default='0.00001')
     parser.add_argument('--epochs', type=int, dest='epochs', default='10')
     parser.add_argument('--gpu', dest='gpu', action="store_true", default=False)
     return parser.parse_args()
@@ -141,7 +141,7 @@ def model_vgg(epochs, learn_rate, train_loader, test_loader, image_datasets, gpu
     classifier = nn.Sequential(OrderedDict([
         ('fc1', nn.Linear(25088, hidden_layers)),
         ('relu1', nn.ReLU()),
-        ('dropout1', nn.Dropout(p=0.5)),
+        ('dropout1', nn.Dropout(p=0.4)),
         ('output', nn.Linear(hidden_layers, 2)),
     ]))
 
@@ -267,14 +267,14 @@ def model_regnet(epochs, learn_rate, train_loader, test_loader, image_datasets, 
     Create new classifier (fc):
         - in_features 3024
         - hidden_layers are configurable 
-        - dropout = .45
+        - dropout = .5
         - out_features = 2
 
     """
     fc = nn.Sequential(OrderedDict([
         ('fc', nn.Linear(3024, hidden_layers)),
         ('relu1', nn.ReLU()),
-        ('dropout1', nn.Dropout(p=0.2)),
+        ('dropout1', nn.Dropout(p=0.4)),
         ('output', nn.Linear(hidden_layers, 2)),
     ]))
 
@@ -337,15 +337,16 @@ def train_model(model, epochs, criterion, optimizer, train_loader,
             train_step(model, train_loader, test_loader, gpu, criterion, optimizer, epoch, epochs,
                        train_loss_list, test_loss_list, train_acc_list, test_accuracy_list, print_every)
 
-    # plots test/train loss and test/train accuracy over the steps once all epochs complete
-    plot_loss_curves(train_loss_list, test_loss_list, train_acc_list, test_accuracy_list, print_every)
-
     # gets model name and adds model name to checkpoint.pth filename
     model_name = model.__class__.__name__
-    print(f"model name = {model_name}")
+
+    # plots test/train loss and test/train accuracy over the steps once all epochs complete
+    plot_loss_curves(train_loss_list, test_loss_list, train_acc_list,
+                     test_accuracy_list, print_every, model_name)
 
     # Updates model save path
     model_dir = save_dir + model_name + '_checkpoint.pth'
+    print(f"model name = {model_name}")
 
     # Call save_model and saves to saved_model folder as filename {model name}_checkpoint.pth
     if model_name == 'VGG':
@@ -583,8 +584,8 @@ def save_model_fc(model, epochs, optimizer, image_datasets, model_dir):
     return
 
 
-def plot_loss_curves(train_loss, test_loss, train_acc, test_accuracy, print_every):
-    """Plots training and test loass and accuracy results.
+def plot_loss_curves(train_loss, test_loss, train_acc, test_accuracy, print_every, model_name):
+    """Plots training and test loss and accuracy results.
 
     Args:
             train_loss
@@ -592,6 +593,7 @@ def plot_loss_curves(train_loss, test_loss, train_acc, test_accuracy, print_ever
             test_loss
             test_accuracy
             print_every
+            model_name
     """
     # set values for x-axis
     step_list = []
@@ -606,13 +608,14 @@ def plot_loss_curves(train_loss, test_loss, train_acc, test_accuracy, print_ever
 
     # Plot loss
     plt.subplot(1, 2, 1)
+    plt.suptitle(model_name)
     plt.plot(step_list, train_loss, label="train_loss")
     plt.plot(step_list, test_loss, label="test_loss")
     plt.title("Loss")
     plt.xlabel("Batch")
     plt.xlim([min(step_list), max(step_list)])
     plt.ylim([0, max_loss + .2])
-    plt.xticks(step_list)
+    plt.xticks(step_list, rotation=90)
     plt.legend()
 
     # Plot accuracy
@@ -623,6 +626,6 @@ def plot_loss_curves(train_loss, test_loss, train_acc, test_accuracy, print_ever
     plt.xlabel("Batch")
     plt.ylim([0, 1])
     plt.xlim([min(step_list), max(step_list)])
-    plt.xticks(step_list)
+    plt.xticks(step_list, rotation=90)
     plt.legend()
     plt.show()

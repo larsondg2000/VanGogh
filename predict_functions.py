@@ -20,7 +20,7 @@ def parse_args():
     """
     parser = argparse.ArgumentParser()
     parser.add_argument('--checkpoint', dest='checkpoint', action='store',
-                        default='saved_models/RegNet_checkpoint.pth')
+                        default='saved_models/EfficientNet_checkpoint.pth')
     parser.add_argument('--class_names', type=str, dest='class_names', default='data/valid/')
     parser.add_argument('--custom', dest='custom_image_path', default="data/valid/vangogh/f_0790.jpg")
     parser.add_argument('--gpu', dest='gpu', action='store_true', default=False)
@@ -53,11 +53,11 @@ def get_class(file_path="data/valid/"):
 
 def predict_image(model, custom_image_path, class_names, gpu):
     """ predicts an individual image """
-    pred_and_plot(model=model,
-                  image_path=custom_image_path,
-                  class_names=class_names,
-                  transform=None,
-                  gpu=gpu)
+    pred_and_plot_image(model=model,
+                        image_path=custom_image_path,
+                        class_names=class_names,
+                        transform=None,
+                        gpu=gpu)
 
 
 def predict_random(filepath, model, class_names, gpu):

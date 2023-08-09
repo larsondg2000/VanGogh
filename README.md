@@ -9,15 +9,15 @@ The project uses three pre-trained models:
 The models have pre-trained weights with a trainable classifier. It uses three python files to train the models:
   1) `train.py`: main() function call
   2) `train_functions.py`: all the required training functions
-  3) `utils.py`: get_class()  function to get class list 
+  3) `utils.py`: get_class()  function to return class list 
 
 ## Model Parameters
 * Optimizer: Adam
 * Loss Function : CrossEntropyLoss
 * Epochs: configurable using CLI
-* learning Rate: configurable using CLI
+* Learning Rate: configurable using CLI
 * Hidden Layers: configurable using CLI
-* Dropout: set to .2 to .5 (depending on model)
+* Dropout: set to .4 to .5 (depending on model)
 * Batch Size: b_size set to 64
 * Save Directory: configurable using CLI (saves as "model name"_checkpoint.pth.)
 
