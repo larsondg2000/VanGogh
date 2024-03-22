@@ -1,5 +1,9 @@
 # Van Gogh Painting Classification using Pytorch and Pre-trained Models
 
+<img alt="alt-text" height="40" src="pytorch.jpg" title="PyTorch" width="200"/>
+
+![alt-text](vg_sunset.png "sunset")
+
 ## Models
 The project uses three pre-trained models:
   1) VGG19 (weights='VGG19_Weights.DEFAULT')
@@ -23,6 +27,8 @@ The models have pre-trained weights with a trainable classifier. It uses three p
 
 ## Accuracy
 All three models achieved >90% accuracy during the validation runs after training.  The models results were fairly close with the Regnet model performing the best. 
+
+![alt-text](regnet8.png "RegNet")
 
 ## Image Data
 A custom dataset was created for the training, testing, and validation. Images were downloaded and sorted into two classes: "Van Gogh" and "not Van Gogh".  
@@ -96,7 +102,9 @@ There are three different prediction functions, each with a main() that calls va
   3) `predict_image.py`: used to check a single unclassified image.
 
 The three predict modules load a saved model checkpoint.  The model checkpoint is configurable in the CLI.
-    
+ 
+![alt-text](rando3.png "predict")
+   
 ## Utilities
 There are some useful functions in the `utils.py` file:
   1) Get the images counts in various folders.
